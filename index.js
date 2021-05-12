@@ -56,7 +56,7 @@ const internQs = [
     {
         type: 'input',
         name: 'internName',
-        message: 'Inters Name:',
+        message: "Intern's Name:",
     },
     {
         type: 'input',
@@ -78,32 +78,44 @@ const internQs = [
 ]
 
 function init() {
-    inquirer.prompt(managerQuestions).then(()=>{
+    inquirer.prompt(managerQuestions).then((managerAnswers)=>{
+        allMembers.push(managerAnswers)
         selectTeamMember()
     })
 }
 
 function selectTeamMember(){
-    inquirer.prompt(selectTeamMemberList).then((selectedMember)=>{
-        if(selectedMember==='Engineer'){
+    inquirer.prompt(selectTeamMemberList).then((stuff)=>{
+        if(stuff.teamMembers==="Engineer"){
             engineerPrompts()
         }
-        if(selectMember==='Intern'){
+        if(stuff.teamMembers==="Intern"){
             internPrompts()
         }
-        if(selectedMember==='Finish building team'){
+        if(stuff.teamMembers==="Finish building team"){
             generateHTML()
         }
     })
 }
 
 function engineerPrompts(){
-    inquirer.prompt(engineerQs)
+    inquirer.prompt(engineerQs).then((engineerInfo)=>{
+        allMembers.push(engineerInfo)
+        selectTeamMember()
+    })
 }
 
 function internPrompts(){
-    inquirer.prompt(internQs)
+    inquirer.prompt(internQs).then((internInfo)=>{
+        allMembers.push(internInfo)
+        selectTeamMember()
+    })
 }
 
+function generateHTML(){
+    console.log(allMembers)
+}
+
+const allMembers = []
 init()
 
