@@ -16,10 +16,17 @@ class Employee {
         this.id = id;
         this.email = email;
     }
-
+    getName(){
+        return this.name;
+    }
+    getId(){
+        return this.id
+    }
+    getEmail(){
+        return this.email
+    }
+    getRole(){
+        return "Employee"
+    }
 }
-
-const Rob = new Employee("", -1,)
-
-console.log(Rob)
 module.exports = Employee;
