@@ -1,19 +1,23 @@
 const inquirer = require('inquirer')
+const Employee = require('./Main/lib/Employee')
+const Manager = require('./Main/lib/Manager')
+const Engineer = require('./Main/lib/Engineer')
+const Intern = require('./Main/lib/Intern')
 
 const managerQuestions = [
     {
         type: 'input',
-        name: 'managerName',
+        name: 'name',
         message: 'Your Name: ',
     },
     {
         type: 'input',
-        name: 'managerId',
+        name: 'id',
         message: 'ID: ',
     },
     {
         type: 'input',
-        name: 'managerEmail',
+        name: 'email',
         message: 'Email: ',
     },
     {
@@ -33,53 +37,55 @@ const selectTeamMemberList = [
 const engineerQs = [
     {
         type: 'input',
-        name: 'engineerName',
+        name: 'name',
         message: "Engineer's name:"
     },
     {
         type: 'input',
-        name: 'engineerId',
+        name: 'id',
         message: "Engineer's ID:"
     },
     {
         type: 'input',
-        name: 'engineerEmail',
+        name: 'email',
         message: "Engineer's Email:"
     },
     {
         type: 'input',
-        name: 'engineerGitHub',
+        name: 'github',
         message: "Engineer's GitHub Username:",
     }
 ]
 const internQs = [
     {
         type: 'input',
-        name: 'internName',
+        name: 'name',
         message: "Intern's Name:",
     },
     {
         type: 'input',
-        name: 'internID',
+        name: 'id',
         message: "Intern's ID:",
 
     },
     {
         type: 'input',
-        name: 'internEmail',
+        name: 'email',
         message: "Intern's Email:",
 
     },
     {
         type: 'input',
-        name: 'internSchool',
+        name: 'school',
         message: "intern's School:",
     },
 ]
 
 function init() {
-    inquirer.prompt(managerQuestions).then((managerAnswers)=>{
-        allMembers.push(managerAnswers)
+    inquirer.prompt(managerQuestions).then((managerInfo)=>{
+        let employee = new Manager(`${managerInfo.name}`, Number(`${managerInfo.id}`), `${managerInfo.email}`, Number(`${managerInfo.officeNumber}`))
+        console.log(employee)
+        generateCard(employee)
         selectTeamMember()
     })
 }
@@ -100,20 +106,24 @@ function selectTeamMember(){
 
 function engineerPrompts(){
     inquirer.prompt(engineerQs).then((engineerInfo)=>{
-        allMembers.push(engineerInfo)
+        let employee = new Engineer(`${engineerInfo.name}`, Number(`${engineerInfo.id}`), `${engineerInfo.email}`, `${engineerInfo.github}`)
+        console.log(employee)
+        generateCard(employee)
         selectTeamMember()
     })
 }
 
 function internPrompts(){
     inquirer.prompt(internQs).then((internInfo)=>{
-        allMembers.push(internInfo)
+        let employee = new Intern(`${internInfo.name}`, Number(`${internInfo.id}`), `${internInfo.email}`, `${internInfo.github}`)
+        console.log(employee)
+        generateCard(employee)
         selectTeamMember()
     })
 }
 
 function generateHTML(){
-    console.log(allMembers)
+
 }
 
 const allMembers = []
