@@ -3,13 +3,13 @@ class Employee {
         if(name===undefined && id===undefined && email===undefined){
             throw Error('Please enter a valid name, id and email')
         }
-        if(typeof name!=="string"){
+        if(typeof name!=="string" || name === undefined){
             throw Error("Please enter a valid name")
         }
-        if(typeof id!=='number'){
+        if(typeof id!=='number'|| id === undefined || id<0){
             throw Error("Please enter a valid id")
         }
-        if(typeof email!=="string"){
+        if(typeof email!=="string"|| email === undefined){
             throw Error("Please enter a valid email")
         }
         this.name = name;
@@ -29,4 +29,5 @@ class Employee {
         return "Employee"
     }
 }
+
 module.exports = Employee;
