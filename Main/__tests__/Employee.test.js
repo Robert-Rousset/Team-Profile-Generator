@@ -27,8 +27,8 @@ describe('Employee', () => {
     })
 
     // Now for when it does work 
-    it("Creates an Employee object with a Name, ID, and Email when all parameters are correctly passed", () => {
-        expect(new Employee("Rob", 10, "email@email.com").toEqual({name: "Rob", ID: 10, email: "email@email.com"}))
+    it("creates new employee object when all parameters are passed", () =>{
+        expect(new Employee("Rob", 10, "email@email.com")).toEqual({name: "Rob", id: 10, email: "email@email.com"})
     })
     it("returns the correct name when getName() is called", () =>{
         const employee = new Employee("Rob", 10, "email@email.com")
