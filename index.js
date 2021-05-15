@@ -1,8 +1,12 @@
 const inquirer = require('inquirer')
-const Employee = require('./Main/lib/Employee')
+const fs = require('fs')
+
 const Manager = require('./Main/lib/Manager')
 const Engineer = require('./Main/lib/Engineer')
 const Intern = require('./Main/lib/Intern')
+
+let allTeamMembers = [];
+let allCards = [];
 
 const managerQuestions = [
     {
@@ -83,50 +87,152 @@ const internQs = [
 
 function init() {
     inquirer.prompt(managerQuestions).then((managerInfo)=>{
-        let employee = new Manager(`${managerInfo.name}`, Number(`${managerInfo.id}`), `${managerInfo.email}`, Number(`${managerInfo.officeNumber}`))
-        console.log(employee)
-        generateCard(employee)
+        let manager = new Manager(`${managerInfo.name}`, Number(`${managerInfo.id}`), `${managerInfo.email}`, Number(`${managerInfo.officeNumber}`))
+        allTeamMembers.push(manager)
+        createManagerCard(manager)
+     
         selectTeamMember()
     })
 }
 
 function selectTeamMember(){
-    inquirer.prompt(selectTeamMemberList).then((stuff)=>{
-        if(stuff.teamMembers==="Engineer"){
+    inquirer.prompt(selectTeamMemberList).then((list)=>{
+        if(list.teamMembers==="Engineer"){
             engineerPrompts()
         }
-        if(stuff.teamMembers==="Intern"){
+        if(list.teamMembers==="Intern"){
             internPrompts()
         }
-        if(stuff.teamMembers==="Finish building team"){
-            generateHTML()
+        if(list.teamMembers==="Finish building team"){
+            generateHtmlFile()
         }
     })
 }
 
 function engineerPrompts(){
     inquirer.prompt(engineerQs).then((engineerInfo)=>{
-        let employee = new Engineer(`${engineerInfo.name}`, Number(`${engineerInfo.id}`), `${engineerInfo.email}`, `${engineerInfo.github}`)
-        console.log(employee)
-        generateCard(employee)
+        let engineer = new Engineer(`${engineerInfo.name}`, Number(`${engineerInfo.id}`), `${engineerInfo.email}`, `${engineerInfo.github}`)
+        allTeamMembers.push(engineer)
+
+        createEngineerCard(engineer)
+
         selectTeamMember()
     })
 }
 
 function internPrompts(){
     inquirer.prompt(internQs).then((internInfo)=>{
-        let employee = new Intern(`${internInfo.name}`, Number(`${internInfo.id}`), `${internInfo.email}`, `${internInfo.github}`)
-        console.log(employee)
-        generateCard(employee)
+        let intern = new Intern(`${internInfo.name}`, Number(`${internInfo.id}`), `${internInfo.email}`, `${internInfo.school}`)
+        allTeamMembers.push(intern)
+        createInternCard(intern)
+
         selectTeamMember()
     })
 }
 
-function generateHTML(){
-
+function generateHtmlFile(){
+    fs.writeFile('./Main/dist/index.html', `${generateHtml()}`, (error) => 
+    error ? console.error(error) : console.log('Great Success')) 
 }
 
-const allMembers = []
+function generateHtml(){
+    return `<!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="./style.css" />
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+          crossorigin="anonymous"
+        />
+      </head>
+    
+      <body>
+        <header>
+          <div class="jumbotron">
+            <h1 class="display-4">Development Team Generator</h1>
+            <p class="lead">Here are your generated Team members</p>
+            <hr class="my-4" />
+          </div>
+        </header>
+    
+        <section>
+    
+    ${allCards}
+
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
+    `
+}
+
+function createManagerCard(manager){
+    let cardElement = `<div class="container-fluid">
+    <div class="row">
+      <div class="card" style="width: 18rem">
+        <img
+          src="./Assets/manager.jpg"
+          class="card-img-top"
+          alt="manager"
+        />
+        <div>
+          <h5 class="card-title">Name: ${manager.getName()}</h5>
+          <p class="card-text">Role: ${manager.getRole()}</p>
+        </div>
+        <div class="card-body">
+          <li class="ID">ID: ${manager.getId()}</li>
+          <li>Email: <a href="mailto:${manager.getEmail()}" rel="EMAIL">${manager.getEmail()}</a></li>
+          <li>Office Number: ${manager.getOfficeNumber()}</li>
+        </div>
+      </div>`
+  allCards.push(cardElement)
+}
+function createEngineerCard(engineer){
+    let cardElement = `<div class="card" style="width: 18rem">
+    <img
+      src="./Assets/engineer.jpg"
+      class="card-img-top"
+      alt="Engineer"
+    />
+    <div>
+      <h5 class="card-title">Name: ${engineer.getName()}</h5>
+      <p class="card-text">Role: ${engineer.getRole()}</p>
+    </div>
+    <div class="card-body">
+      <li class="ID">ID: ${engineer.getId()}</li>
+      <li>Email: <a href="mailto:${engineer.getEmail()}" rel="EMAIL">${engineer.getEmail()}</a></li>
+      <li>Github: <a href="https://Github.com/${engineer.getGithub()}">${engineer.getGithub()}</a></li>
+    </div>
+  </div>`
+  allCards.push(cardElement)
+
+}
+function createInternCard(intern){
+    let cardElement = `<div class="card" style="width: 18rem">
+    <img
+      src="./Assets/intern.jpeg"
+      class="card-img-top"
+      alt="Intern"
+    />
+    <div>
+      <h5 class="card-title">Name: ${intern.getName()}</h5>
+      <p class="card-text">Role: ${intern.getRole()}</p>
+    </div>
+    <div class="card-body">
+      <li class="ID">ID: ${intern.getId()}</li>
+      <li>Email: <a href="mailto:${intern.getEmail()}" rel="EMAIL">${intern.getEmail()}</a></li>
+      <li>School: ${intern.getSchool()}</li>
+    </div>
+  </div>`
+  allCards.push(cardElement)
+}
 
 init()
 

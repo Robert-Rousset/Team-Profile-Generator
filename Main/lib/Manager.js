@@ -6,7 +6,10 @@ class Manager extends Employee {
         if (typeof officeNumber !== "number" || officeNumber === undefined || officeNumber<0) {
         throw Error("Please enter a valid office number");
         }
-        this.school = officeNumber;
+        this.officeNumber = officeNumber;
+    }
+    getOfficeNumber(){
+        return this.officeNumber;
     }
     getRole() {
         return "Manager";

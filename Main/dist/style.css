@@ -1,0 +1,36 @@
+header{
+    margin: auto;
+    width: 1000px;
+}
+section{
+    margin:auto;
+    width:fit-content;
+    max-width: 1300px;
+}
+.card{
+    margin-bottom:20px;
+    margin-right: 20px;
+    align-items: center;
+    list-style-type: none;
+    width: fit-content;
+}
+.card img{
+    width: 280px;
+    height: 190px;
+}
+
+.card p {
+    margin: 0px;
+    padding: 0px;
+}
+
+.card-body {
+    width: 300px;
+}
+.card-title {
+    margin-top: 10px;
+}
+.ID {
+    background-color: rgb(238, 238, 238);
+    margin-bottom: 5px;
+}
