@@ -1,18 +1,17 @@
 {
-  "name": "my-function",
+  "name": "Team-Generator",
   "version": "1.0.0",
-  "description": "",
+  "description": "A command line application that generates a development team page based on user inputs",
   "scripts": {
     "test": "jest --watch"
   },
-  "author": "",
+  "author": "Robert Rousset",
   "license": "ISC",
   "devDependencies": {
-    "@babel/preset-env": "^7.12.1",
-    "babel-jest": "^26.6.3",
     "jest": "^26.6.3"
   },
   "dependencies": {
-    "inquirer": "^8.0.0"
+    "inquirer": "^8.0.0",
+    "prettier": "^2.3.0"
   }
 }
