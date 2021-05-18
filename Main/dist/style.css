@@ -1,4 +1,8 @@
+.all{
+    background-color: rgb(9, 10, 10);
+}
 header{
+    color: rgb(219, 219, 219);
     margin: auto;
     width: 1000px;
 }
