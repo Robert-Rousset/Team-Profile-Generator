@@ -1,142 +1,156 @@
-const inquirer = require('inquirer')
-const fs = require('fs')
+const inquirer = require("inquirer");
+const fs = require("fs");
 
-const Manager = require('./Main/lib/Manager')
-const Engineer = require('./Main/lib/Engineer')
-const Intern = require('./Main/lib/Intern')
+const Manager = require("./Main/lib/Manager");
+const Engineer = require("./Main/lib/Engineer");
+const Intern = require("./Main/lib/Intern");
 
 let allTeamMembers = [];
 let allCards = [];
 
 const managerQuestions = [
-    {
-        type: 'input',
-        name: 'name',
-        message: 'Manager Name: ',
-    },
-    {
-        type: 'input',
-        name: 'id',
-        message: 'ID: ',
-    },
-    {
-        type: 'input',
-        name: 'email',
-        message: 'Email: ',
-    },
-    {
-        type: 'input',
-        name: 'officeNumber',
-        message: 'Office Number: ',
-    }
+  {
+    type: "input",
+    name: "name",
+    message: "Manager Name: ",
+  },
+  {
+    type: "input",
+    name: "id",
+    message: "ID: ",
+  },
+  {
+    type: "input",
+    name: "email",
+    message: "Email: ",
+  },
+  {
+    type: "input",
+    name: "officeNumber",
+    message: "Office Number: ",
+  },
 ];
 const selectTeamMemberList = [
-    {
-        type: 'list',
-        name: 'teamMembers',
-        message: "Select which team member you'd like to add:",
-        choices: ['Engineer', 'Intern', 'Finish building team'],
-    }
+  {
+    type: "list",
+    name: "teamMembers",
+    message: "Select which team member you'd like to add:",
+    choices: ["Engineer", "Intern", "Finish building team"],
+  },
 ];
 const engineerQs = [
-    {
-        type: 'input',
-        name: 'name',
-        message: "Engineer's name:"
-    },
-    {
-        type: 'input',
-        name: 'id',
-        message: "Engineer's ID:"
-    },
-    {
-        type: 'input',
-        name: 'email',
-        message: "Engineer's Email:"
-    },
-    {
-        type: 'input',
-        name: 'github',
-        message: "Engineer's GitHub Username:",
-    }
-]
+  {
+    type: "input",
+    name: "name",
+    message: "Engineer's name:",
+  },
+  {
+    type: "input",
+    name: "id",
+    message: "Engineer's ID:",
+  },
+  {
+    type: "input",
+    name: "email",
+    message: "Engineer's Email:",
+  },
+  {
+    type: "input",
+    name: "github",
+    message: "Engineer's GitHub Username:",
+  },
+];
 const internQs = [
-    {
-        type: 'input',
-        name: 'name',
-        message: "Intern's Name:",
-    },
-    {
-        type: 'input',
-        name: 'id',
-        message: "Intern's ID:",
-
-    },
-    {
-        type: 'input',
-        name: 'email',
-        message: "Intern's Email:",
-
-    },
-    {
-        type: 'input',
-        name: 'school',
-        message: "intern's School:",
-    },
-]
+  {
+    type: "input",
+    name: "name",
+    message: "Intern's Name:",
+  },
+  {
+    type: "input",
+    name: "id",
+    message: "Intern's ID:",
+  },
+  {
+    type: "input",
+    name: "email",
+    message: "Intern's Email:",
+  },
+  {
+    type: "input",
+    name: "school",
+    message: "intern's School:",
+  },
+];
 
 function init() {
-    inquirer.prompt(managerQuestions).then((managerInfo)=>{
-        let manager = new Manager(`${managerInfo.name}`, Number(`${managerInfo.id}`), `${managerInfo.email}`, Number(`${managerInfo.officeNumber}`))
-        allTeamMembers.push(manager)
-        createManagerCard(manager)
-     
-        selectTeamMember()
-    })
+  inquirer.prompt(managerQuestions).then((managerInfo) => {
+    let manager = new Manager(
+      `${managerInfo.name}`,
+      Number(`${managerInfo.id}`),
+      `${managerInfo.email}`,
+      Number(`${managerInfo.officeNumber}`)
+    );
+    allTeamMembers.push(manager);
+    createManagerCard(manager);
+
+    selectTeamMember();
+  });
 }
 
-function selectTeamMember(){
-    inquirer.prompt(selectTeamMemberList).then((list)=>{
-        if(list.teamMembers==="Engineer"){
-            engineerPrompts()
-        }
-        if(list.teamMembers==="Intern"){
-            internPrompts()
-        }
-        if(list.teamMembers==="Finish building team"){
-            generateHtmlFile()
-        }
-    })
+function selectTeamMember() {
+  inquirer.prompt(selectTeamMemberList).then((list) => {
+    if (list.teamMembers === "Engineer") {
+      engineerPrompts();
+    }
+    if (list.teamMembers === "Intern") {
+      internPrompts();
+    }
+    if (list.teamMembers === "Finish building team") {
+      generateHtmlFile();
+    }
+  });
 }
 
-function engineerPrompts(){
-    inquirer.prompt(engineerQs).then((engineerInfo)=>{
-        let engineer = new Engineer(`${engineerInfo.name}`, Number(`${engineerInfo.id}`), `${engineerInfo.email}`, `${engineerInfo.github}`)
-        allTeamMembers.push(engineer)
+function engineerPrompts() {
+  inquirer.prompt(engineerQs).then((engineerInfo) => {
+    let engineer = new Engineer(
+      `${engineerInfo.name}`,
+      Number(`${engineerInfo.id}`),
+      `${engineerInfo.email}`,
+      `${engineerInfo.github}`
+    );
+    allTeamMembers.push(engineer);
 
-        createEngineerCard(engineer)
+    createEngineerCard(engineer);
 
-        selectTeamMember()
-    })
+    selectTeamMember();
+  });
 }
 
-function internPrompts(){
-    inquirer.prompt(internQs).then((internInfo)=>{
-        let intern = new Intern(`${internInfo.name}`, Number(`${internInfo.id}`), `${internInfo.email}`, `${internInfo.school}`)
-        allTeamMembers.push(intern)
-        createInternCard(intern)
+function internPrompts() {
+  inquirer.prompt(internQs).then((internInfo) => {
+    let intern = new Intern(
+      `${internInfo.name}`,
+      Number(`${internInfo.id}`),
+      `${internInfo.email}`,
+      `${internInfo.school}`
+    );
+    allTeamMembers.push(intern);
+    createInternCard(intern);
 
-        selectTeamMember()
-    })
+    selectTeamMember();
+  });
 }
 
-function generateHtmlFile(){
-    fs.writeFile('./Main/dist/index.html', `${generateHtml()}`, (error) => 
-    error ? console.error(error) : console.log('Great Success')) 
+function generateHtmlFile() {
+  fs.writeFile("./index.html", `${generateHtml()}`, (error) =>
+    error ? console.error(error) : console.log("Great Success")
+  );
 }
 
-function generateHtml(){
-    return `<!DOCTYPE html>
+function generateHtml() {
+  return `<!DOCTYPE html>
     <html lang="en">
       <head>
         <meta charset="UTF-8" />
@@ -170,11 +184,11 @@ function generateHtml(){
     </section>
   </body>
 </html>
-    `
+    `;
 }
 
-function createManagerCard(manager){
-    let cardElement = `<div class="container-fluid">
+function createManagerCard(manager) {
+  let cardElement = `<div class="container-fluid">
     <div class="row">
       <div class="card" style="width: 18rem">
         <img
@@ -191,11 +205,11 @@ function createManagerCard(manager){
           <li>Email: <a href="mailto:${manager.getEmail()}" rel="EMAIL">${manager.getEmail()}</a></li>
           <li>Office Number: ${manager.getOfficeNumber()}</li>
         </div>
-      </div>`
-  allCards.push(cardElement)
+      </div>`;
+  allCards.push(cardElement);
 }
-function createEngineerCard(engineer){
-    let cardElement = `<div class="card" style="width: 18rem">
+function createEngineerCard(engineer) {
+  let cardElement = `<div class="card" style="width: 18rem">
     <img
       src="./Assets/engineer.jpg"
       class="card-img-top"
@@ -210,12 +224,11 @@ function createEngineerCard(engineer){
       <li>Email: <a href="mailto:${engineer.getEmail()}" rel="EMAIL">${engineer.getEmail()}</a></li>
       <li>Github: <a href="https://Github.com/${engineer.getGithub()}">${engineer.getGithub()}</a></li>
     </div>
-  </div>`
-  allCards.push(cardElement)
-
+  </div>`;
+  allCards.push(cardElement);
 }
-function createInternCard(intern){
-    let cardElement = `<div class="card" style="width: 18rem">
+function createInternCard(intern) {
+  let cardElement = `<div class="card" style="width: 18rem">
     <img
       src="./Assets/intern.jpeg"
       class="card-img-top"
@@ -230,9 +243,8 @@ function createInternCard(intern){
       <li>Email: <a href="mailto:${intern.getEmail()}" rel="EMAIL">${intern.getEmail()}</a></li>
       <li>School: ${intern.getSchool()}</li>
     </div>
-  </div>`
-  allCards.push(cardElement)
+  </div>`;
+  allCards.push(cardElement);
 }
 
-init()
-
+init();
