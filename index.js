@@ -1,9 +1,9 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 
-const Manager = require("./Main/lib/Manager");
-const Engineer = require("./Main/lib/Engineer");
-const Intern = require("./Main/lib/Intern");
+const Manager = require("./main/lib/Manager");
+const Engineer = require("./main/lib/Engineer");
+const Intern = require("./main/lib/Intern");
 
 let allTeamMembers = [];
 let allCards = [];
@@ -157,7 +157,7 @@ function generateHtml() {
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Team Generation</title>
-        <link rel="stylesheet" href="./Main/dist/style.css" />
+        <link rel="stylesheet" href="./main/dist/style.css" />
         <link
           href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
           rel="stylesheet"
@@ -192,7 +192,7 @@ function createManagerCard(manager) {
     <div class="row">
       <div class="card" style="width: 18rem">
         <img
-          src="./Assets/manager.jpg"
+          src="./main/dist/assets/manager.jpg"
           class="card-img-top"
           alt="manager"
         />
@@ -211,7 +211,7 @@ function createManagerCard(manager) {
 function createEngineerCard(engineer) {
   let cardElement = `<div class="card" style="width: 18rem">
     <img
-      src="./Assets/engineer.jpg"
+      src="./main/dist/assets/engineer.jpg"
       class="card-img-top"
       alt="Engineer"
     />
@@ -230,7 +230,7 @@ function createEngineerCard(engineer) {
 function createInternCard(intern) {
   let cardElement = `<div class="card" style="width: 18rem">
     <img
-      src="./Assets/intern.jpeg"
+      src="./main/dist/assets/intern.jpeg"
       class="card-img-top"
       alt="Intern"
     />
