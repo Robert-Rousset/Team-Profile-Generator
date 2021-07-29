@@ -202,6 +202,7 @@ function createManagerCard(manager) {
         class="card-img-top"
         alt="Manager"
       />
+      <div class="background"></div>
       <div class="info">
         <div class="title">
         <h5 class="card-title"><b>${manager.getName()}</b></h5>
@@ -231,6 +232,7 @@ function createEngineerCard(engineer) {
         class="card-img-top"
         alt="Engineer"
       />
+      <div class="background"></div>
       <div class="info">
         <div class="title">
         <h5 class="card-title"><b>${engineer.getName()}</b></h5>
@@ -255,6 +257,7 @@ function createInternCard(intern) {
     class="card-img-top"
     alt="Intern"
   />
+  <div class="background"></div>
       <div class="info">
         <div class="title">
         <h5 class="card-title"><b>${intern.getName()}</b></h5>
