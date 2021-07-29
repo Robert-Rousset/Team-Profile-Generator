@@ -1,5 +1,5 @@
 {
-  "name": "Team-Generator",
+  "name": "team-generator",
   "version": "1.0.0",
   "description": "A command line application that generates a development team page based on user inputs",
   "scripts": {

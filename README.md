@@ -9,11 +9,11 @@ Then came the part I struggled with, using these objects to create HTML, and com
 
 ## Links and Screenshots
 
-Here is my walkthrough video: https://drive.google.com/file/d/1dlu4ppCKBMV0YgvvHR4B8NF7-eyUtCXb/view
+Here is my walkthrough video: [Walkthrough](https://drive.google.com/file/d/197GKm0nXNH2IvWoADte84FCQwN1KOIS8/view?usp=sharing)
 
 The link to my generated [HTML](https://robert-rousset.github.io/Team-Profile-Generator/)
 
-And a screenshot of my working application: ![Screenshot](./Main/dist/Assets/ApplicationScreenshot.png)
-![AnotherScreenshot](./Main/dist/Assets/HtmlScreenshot.png)
+And a screenshot of my working application: ![Screenshot](./develop/dist/images/ApplicationScreenshot.png)
+![AnotherScreenshot](./develop/dist/images/HtmlScreenshot.png)
 
-Screenshot of passing Tests: ![Tests](./Main/dist/Assets/Tests.png)
+Screenshot of passing Tests: ![Tests](./develop/dist/images/Tests.png)

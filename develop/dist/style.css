@@ -1,0 +1,98 @@
+.all {
+  background-color: rgb(9, 10, 10);
+}
+header {
+  color: rgb(219, 219, 219);
+  margin: auto;
+  width: 1000px;
+}
+p {
+  font-family: "Roboto", sans-serif;
+}
+section {
+  margin: auto;
+  width: fit-content;
+  max-width: 1300px;
+}
+.card {
+  position: relative;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  align-items: center;
+  list-style-type: none;
+  width: fit-content;
+  border-top-left-radius: 10px !important;
+  border-top-right-radius: 10px !important;
+  padding: 0px;
+  border-bottom: 10px solid grey !important;
+  height: 300px;
+  width: 20rem !important;
+  background-color: rgb(245, 252, 255) !important;
+}
+.card img {
+  width: 290px;
+  height: 200px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.row > * {
+  padding: 0px !important;
+}
+.card p {
+  margin: 0px;
+  padding: 0px;
+}
+
+.card-body {
+  padding: 0px !important;
+  width: 300px;
+  opacity: 0;
+  transition: ease-in-out 0.25s;
+}
+.info {
+  position: absolute;
+  bottom: 10px;
+  transform: translateY(120px);
+  transition: ease-in-out 1s;
+}
+.card:hover > .info {
+  transform: translateY(0px);
+  transition: ease-in-out 1s;
+}
+.info:hover > .card-body {
+  opacity: 1;
+  transition: ease-in-out 0.5s 0.5s;
+}
+.info:hover > .title {
+  transition: 0.5s 1s ease-in-out;
+  background-color: rgba(240, 248, 252, 0.5);
+  backdrop-filter: blur(5px);
+}
+.card-title {
+  font-size: 25px;
+
+  margin-top: 10px;
+  text-align: center;
+  color: rgb(0, 3, 3);
+}
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 80px;
+  padding-bottom: 50px;
+  transition: ease-in-out 0.5s;
+}
+.ID {
+  background-color: rgb(218, 219, 221);
+  margin-bottom: 5px;
+  text-align: center;
+  width: 100%;
+}
+.email {
+  text-align: center;
+}
+.other {
+  text-align: center;
+}

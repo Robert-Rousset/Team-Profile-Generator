@@ -1,9 +1,9 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 
-const Manager = require("./main/lib/Manager");
-const Engineer = require("./main/lib/Engineer");
-const Intern = require("./main/lib/Intern");
+const Manager = require("./develop/lib/Manager");
+const Engineer = require("./develop/lib/Engineer");
+const Intern = require("./develop/lib/Intern");
 
 let allTeamMembers = [];
 let allCards = [];
@@ -157,12 +157,18 @@ function generateHtml() {
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Team Generation</title>
-        <link rel="stylesheet" href="./main/dist/style.css" />
+        <link rel="stylesheet" href="./develop/dist/style.css" />
         <link
           href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
           rel="stylesheet"
           integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
           crossorigin="anonymous"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+          rel="stylesheet"
         />
       </head>
     
@@ -176,7 +182,8 @@ function generateHtml() {
         </header>
     
         <section>
-    
+        <div class="container-fluid">
+        <div class="row">
     ${allCards}
 
         </div>
@@ -188,62 +195,78 @@ function generateHtml() {
 }
 
 function createManagerCard(manager) {
-  let cardElement = `<div class="container-fluid">
-    <div class="row">
-      <div class="card" style="width: 18rem">
-        <img
-          src="./main/dist/assets/manager.jpg"
-          class="card-img-top"
-          alt="manager"
-        />
-        <div>
-          <h5 class="card-title">Name: ${manager.getName()}</h5>
-          <p class="card-text">Role: ${manager.getRole()}</p>
+  let cardElement = `
+    <div class="card">
+      <img
+        src="./develop/dist/images/manager.jpg"
+        class="card-img-top"
+        alt="Manager"
+      />
+      <div class="info">
+        <div class="title">
+        <h5 class="card-title"><b>${manager.getName()}</b></h5>
+        <p class="card-text">Role: ${manager.getRole()}</p>
         </div>
         <div class="card-body">
           <li class="ID">ID: ${manager.getId()}</li>
-          <li>Email: <a href="mailto:${manager.getEmail()}" rel="EMAIL">${manager.getEmail()}</a></li>
-          <li>Office Number: ${manager.getOfficeNumber()}</li>
+          <li class="email">
+            Email:
+            <a href="${manager.getEmail()}" rel="EMAIL"
+              >${manager.getEmail()}</a
+            >
+          </li>
+          <li class="other">Office Number: ${manager.getOfficeNumber()}</li>
         </div>
-      </div>`;
+      </div>
+    </div>`;
   allCards.push(cardElement);
 }
+
 function createEngineerCard(engineer) {
-  let cardElement = `<div class="card" style="width: 18rem">
-    <img
-      src="./main/dist/assets/engineer.jpg"
-      class="card-img-top"
-      alt="Engineer"
-    />
-    <div>
-      <h5 class="card-title">Name: ${engineer.getName()}</h5>
+  let cardElement = `
+  
+    <div class="card">
+      <img
+        src="./develop/dist/images/engineer.jpg"
+        class="card-img-top"
+        alt="Engineer"
+      />
+      <div class="info">
+        <div class="title">
+        <h5 class="card-title"><b>${engineer.getName()}</b></h5>
       <p class="card-text">Role: ${engineer.getRole()}</p>
-    </div>
-    <div class="card-body">
-      <li class="ID">ID: ${engineer.getId()}</li>
-      <li>Email: <a href="mailto:${engineer.getEmail()}" rel="EMAIL">${engineer.getEmail()}</a></li>
-      <li>Github: <a href="https://Github.com/${engineer.getGithub()}">${engineer.getGithub()}</a></li>
-    </div>
-  </div>`;
+        </div>
+        <div class="card-body">
+          <li class="ID">ID: ${engineer.getId()}</li>
+          <li class="email">Email: <a href="mailto:${engineer.getEmail()}" rel="EMAIL">${engineer.getEmail()}</a></li>
+          </li>
+          <li class="other">Github: <a href="https://Github.com/${engineer.getGithub()}">${engineer.getGithub()}</a></li>
+        </div>
+      </div>
+    </div>`;
   allCards.push(cardElement);
 }
 function createInternCard(intern) {
-  let cardElement = `<div class="card" style="width: 18rem">
+  let cardElement = `
+  
+    <div class="card">
     <img
-      src="./main/dist/assets/intern.jpeg"
-      class="card-img-top"
-      alt="Intern"
-    />
-    <div>
-      <h5 class="card-title">Name: ${intern.getName()}</h5>
-      <p class="card-text">Role: ${intern.getRole()}</p>
-    </div>
-    <div class="card-body">
-      <li class="ID">ID: ${intern.getId()}</li>
-      <li>Email: <a href="mailto:${intern.getEmail()}" rel="EMAIL">${intern.getEmail()}</a></li>
-      <li>School: ${intern.getSchool()}</li>
-    </div>
-  </div>`;
+    src="./develop/dist/images/intern.jpeg"
+    class="card-img-top"
+    alt="Intern"
+  />
+      <div class="info">
+        <div class="title">
+        <h5 class="card-title"><b>${intern.getName()}</b></h5>
+        <p class="card-text">Role: ${intern.getRole()}</p>
+        </div>
+        <div class="card-body">
+        <li class="ID">ID: ${intern.getId()}</li>
+        <li class="email">Email: <a href="mailto:${intern.getEmail()}" rel="EMAIL">${intern.getEmail()}</a></li>
+        <li class="other">School: ${intern.getSchool()}</li>
+        </div>
+      </div>
+    </div>`;
   allCards.push(cardElement);
 }
 

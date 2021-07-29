@@ -1,101 +1,104 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Team Generation</title>
-    <link rel="stylesheet" href="./Main/dist/style.css" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
-      crossorigin="anonymous"
-    />
-  </head>
-
-  <body class="all">
-    <header>
-      <div class="jumbotron">
-        <h1 class="display-4">Development Team Generator</h1>
-        <p class="lead">Here are your generated Team members</p>
-        <hr class="my-4" />
-      </div>
-    </header>
-
-    <section>
-      <div class="container-fluid">
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Team Generation</title>
+        <link rel="stylesheet" href="./develop/dist/style.css" />
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+          crossorigin="anonymous"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+    
+      <body class="all">
+        <header>
+          <div class="jumbotron">
+            <h1 class="display-4">Development Team Generator</h1>
+            <p class="lead">Here are your generated Team members</p>
+            <hr class="my-4" />
+          </div>
+        </header>
+    
+        <section>
+        <div class="container-fluid">
         <div class="row">
-          <div class="card" style="width: 18rem">
-            <img
-              src="./main/dist/assets/manager.jpg"
-              class="card-img-top"
-              alt="manager"
-            />
-            <div>
-              <h5 class="card-title">Name: John Doe</h5>
-              <p class="card-text">Role: Manager</p>
-            </div>
-            <div class="card-body">
-              <li class="ID">ID: 1</li>
-              <li>
-                Email:
-                <a href="mailto:JohnDoe@email.com" rel="EMAIL"
-                  >JohnDoe@email.com</a
-                >
-              </li>
-              <li>Office Number: 42</li>
-            </div>
-          </div>
-          ,
-          <div class="card" style="width: 18rem">
-            <img
-              src="./main/dist/assets/engineer.jpg"
-              class="card-img-top"
-              alt="Engineer"
-            />
-            <div>
-              <h5 class="card-title">Name: Robert Rousset</h5>
-              <p class="card-text">Role: Engineer</p>
-            </div>
-            <div class="card-body">
-              <li class="ID">ID: 2</li>
-              <li>
-                Email:
-                <a href="mailto:robertrousset94@gmail.com" rel="EMAIL"
-                  >robertrousset94@gmail.com</a
-                >
-              </li>
-              <li>
-                Github:
-                <a href="https://Github.com/robert-rousset">robert-rousset</a>
-              </li>
-            </div>
-          </div>
-          ,
-          <div class="card" style="width: 18rem">
-            <img
-              src="./main/dist/assets/intern.jpeg"
-              class="card-img-top"
-              alt="Intern"
-            />
-            <div>
-              <h5 class="card-title">Name: Jane Doe</h5>
-              <p class="card-text">Role: Intern</p>
-            </div>
-            <div class="card-body">
-              <li class="ID">ID: 3</li>
-              <li>
-                Email:
-                <a href="mailto:JaneDoe@email.com" rel="EMAIL"
-                  >JaneDoe@email.com</a
-                >
-              </li>
-              <li>School: Jane School</li>
-            </div>
-          </div>
+    
+    <div class="card">
+      <img
+        src="./develop/dist/images/manager.jpg"
+        class="card-img-top"
+        alt="Manager"
+      />
+      <div class="info">
+        <div class="title">
+        <h5 class="card-title"><b>John Doe</b></h5>
+        <p class="card-text">Role: Manager</p>
+        </div>
+        <div class="card-body">
+          <li class="ID">ID: 1</li>
+          <li class="email">
+            Email:
+            <a href="John@Doe.com" rel="EMAIL"
+              >John@Doe.com</a
+            >
+          </li>
+          <li class="other">Office Number: 42</li>
+        </div>
+      </div>
+    </div>,
+  
+    <div class="card">
+      <img
+        src="./develop/dist/images/engineer.jpg"
+        class="card-img-top"
+        alt="Engineer"
+      />
+      <div class="info">
+        <div class="title">
+        <h5 class="card-title"><b>Robert Rousset</b></h5>
+      <p class="card-text">Role: Engineer</p>
+        </div>
+        <div class="card-body">
+          <li class="ID">ID: 2</li>
+          <li class="email">Email: <a href="mailto:robertrousset94@gmail.com" rel="EMAIL">robertrousset94@gmail.com</a></li>
+          </li>
+          <li class="other">Github: <a href="https://Github.com/robert-rousset">robert-rousset</a></li>
+        </div>
+      </div>
+    </div>,
+  
+    <div class="card">
+    <img
+    src="./develop/dist/images/intern.jpeg"
+    class="card-img-top"
+    alt="Intern"
+  />
+      <div class="info">
+        <div class="title">
+        <h5 class="card-title"><b>Jane Doe</b></h5>
+        <p class="card-text">Role: Intern</p>
+        </div>
+        <div class="card-body">
+        <li class="ID">ID: 3</li>
+        <li class="email">Email: <a href="mailto:Jane@Doe.com" rel="EMAIL">Jane@Doe.com</a></li>
+        <li class="other">School: Jane School</li>
+        </div>
+      </div>
+    </div>
+
         </div>
       </div>
     </section>
   </body>
 </html>
+    
