@@ -9,7 +9,7 @@ Then came the part I struggled with, using these objects to create HTML, and com
 
 ## Links and Screenshots
 
-Here is my walkthrough video: [Walkthrough](https://drive.google.com/file/d/197GKm0nXNH2IvWoADte84FCQwN1KOIS8/view?usp=sharing)
+Here is my walkthrough video: [Walkthrough](https://drive.google.com/file/d/1VFlg1Jiomg2AEMMvn6ArzpoByIn5zZiF/view?usp=sharing)
 
 The link to my generated [HTML](https://robert-rousset.github.io/Team-Profile-Generator/)
 
