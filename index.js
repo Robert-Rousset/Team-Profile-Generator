@@ -182,11 +182,11 @@ function generateHtml() {
         </header>
     
         <section>
-        <div class="container-fluid">
+
         <div class="row">
     ${allCards}
 
-        </div>
+
       </div>
     </section>
   </body>

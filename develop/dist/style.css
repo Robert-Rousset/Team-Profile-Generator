@@ -12,8 +12,11 @@ p {
 }
 section {
   margin: auto;
-  width: fit-content;
-  max-width: 1300px;
+  padding: 50px;
+}
+.row {
+  align-items: center;
+  justify-content: center;
 }
 .card {
   position: relative;
